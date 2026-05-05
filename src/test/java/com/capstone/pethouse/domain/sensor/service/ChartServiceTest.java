@@ -1,6 +1,7 @@
 package com.capstone.pethouse.domain.sensor.service;
 
 import com.capstone.pethouse.domain.device.entity.Device;
+import com.capstone.pethouse.domain.User.entity.User;
 import com.capstone.pethouse.domain.device.repository.DeviceRepository;
 import com.capstone.pethouse.domain.sensor.dto.DataVo;
 import com.capstone.pethouse.domain.sensor.entity.HouseData;
@@ -45,7 +46,8 @@ class ChartServiceTest {
     @Test
     @DisplayName("HOUSE 타입 - 하우스 데이터 반환")
     void chartForHouseDevice() {
-        Device device = Device.of("DEV001", "user01", "SN-001", "HOUSE");
+        User user = User.ofUser("user01", "pass", "Name", "010");
+        Device device = Device.of("DEV001", user, "SN-001", "HOUSE");
         ReflectionTestUtils.setField(device, "seq", 1L);
 
         HouseData h = HouseData.of("DEV001", 25.0, 60.0, 400.0);
@@ -67,7 +69,8 @@ class ChartServiceTest {
     @Test
     @DisplayName("COLLAR 타입 - 목걸이 데이터 반환")
     void chartForCollarDevice() {
-        Device device = Device.of("DEV002", "user01", "SN-002", "COLLAR");
+        User user = User.ofUser("user01", "pass", "Name", "010");
+        Device device = Device.of("DEV002", user, "SN-002", "COLLAR");
 
         NeckData n = NeckData.of("DEV002", 18.0, 64.0, 404.0);
         ReflectionTestUtils.setField(n, "seq", 1L);

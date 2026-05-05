@@ -55,7 +55,7 @@ public class Hospital extends AuditingFields {
         this.longitude = longitude;
         this.mainMedCode = mainMedCode;
         if (medCodes != null) {
-            this.medCodes = medCodes;
+            this.medCodes = new ArrayList<>(medCodes);
         }
     }
 
